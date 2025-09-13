@@ -1,4 +1,5 @@
 use bevy::input::keyboard::NativeKeyCode;
+use bevy::log;
 use bevy::prelude::*;
 use bevy_console::{ConsoleConfiguration, ConsolePlugin};
 
@@ -18,6 +19,9 @@ fn main() {
                 KeyCode::F1,
             ],
             ..Default::default()
+        })
+       .add_systems(Startup, |mut commands: Commands| {
+            commands.spawn(Camera2d);
         })
         .run();
 }

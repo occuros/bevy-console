@@ -5,6 +5,9 @@ fn main() {
     App::new()
         .add_plugins((DefaultPlugins, ConsolePlugin))
         .add_systems(Update, raw_commands.in_set(ConsoleSet::Commands))
+        .add_systems(Startup, |mut commands: Commands| {
+            commands.spawn(Camera2d);
+        })
         .run();
 }
 

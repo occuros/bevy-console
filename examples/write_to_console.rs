@@ -8,7 +8,11 @@ fn main() {
         // systems in the [`ConsoleSet::Commands`] do not run if there are no console commands entered
         // .add_systems(Update, write_to_console.in_set(ConsoleSet::Commands))
         // the below is the equivalent but without run conditions
+        .add_systems(Startup, |mut commands: Commands| {
+            commands.spawn(Camera2d);
+        })
         .add_systems(Update, write_to_console.after(ConsoleSet::ConsoleUI))
+        
         .run();
 }
 

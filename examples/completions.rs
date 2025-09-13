@@ -11,10 +11,14 @@ fn main() {
                 vec!["custom".into(), "foo".into()],
                 vec!["custom".into(), "bar".into()],
                 vec!["custom".into(), "zoo".into()],
+                vec!["zoo".into()],
             ],
             ..Default::default()
         })
         .add_console_command::<CustomCommand, _>(log_command)
+        .add_systems(Startup, |mut commands: Commands| {
+            commands.spawn(Camera2d);
+        })
         .run();
 }
 
